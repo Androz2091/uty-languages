@@ -1,6 +1,6 @@
 /*Bonjour ou bonsoir, Vous êtes dans le fichier french.js ici vous devez seulement corriger les fautes d'orthographe. tout se qui est
 dans des accolade ne doit pas être modifié
-Exemple : "Lecture de ${musique}..." vous devez juste traduire en "Playing of ${musique}" et non "Playing of ${music}"
+Exemple : "Lecture de ${musique}..."
 Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un emoji).
 */
 
