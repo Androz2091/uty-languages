@@ -359,7 +359,7 @@ const languageData = {
                 `♥️ Shared servers with Uty`,
                 `<:ID:708755663760785501> ID`
 			],
-			USERINFO_NO_GAME: "Np game",
+			USERINFO_NO_GAME: "No game",
             USERINFO_NO_NICKNAME: "No nickname",
             
             SERVERINFO_HEADINGS:[
