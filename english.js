@@ -1,227 +1,225 @@
-/*Bonjour ou bonsoir, Vous êtes dans le fichier english.js ici vous devez traduire en anglais les phrases présentes ici. tout se qui est
-dans des accolade ne doit pas être modifié
-Exemple : "Lecture de ${musique}..." vous devez juste traduire en "Playing of ${musique}" et non "Playing of ${music}"
-Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un emoji).
-*/
+const config = require('../config.json'),
+prefix = config.prefix;
 
+const languageData = {
 //Time
-    ONE_DAY: "un jour",
+    ONE_DAY: "a day",
     DAYS: (hijfsdg) => `${hijfsdg}j`,
-    ONE_HOUR: "une heure",
+    ONE_HOUR: "an hour",
     HOURS: (sfdqe) => `${sfdqe}h`,
-    ONE_MINUTE : "une minute",
+    ONE_MINUTE : "a minute",
     MINUTES: (mplas) => `${mplas}m`,
-    ONE_SECOND: "une seconde",
+    ONE_SECOND: "a second",
     SECONDS: (fsdko) => `${fsdko}s`,
 
 //Permissions ERROR
-    ERRORPERMSTITLE: "Erreur de permissions!",
-    ERRORPERMS: (opp) => `Vous n'avez la permission \`${opp}\` pour executer cette commande.`,
+    ERRORPERMSTITLE: "Permission Error !",
+    ERRORPERMS: (opp) => `You don't have the permission \`${opp}\`. You must have it in order to execute the command.`,
 
-//GIVEAWAY
-    GAW_SYNTAX: (trf) => `Syntaxe : \`${trf}gaw <temps> <nb gagnant> <prix>\`\nExemple : \`${trf}gaw 7d 1 Premium Uty\``,
-    GIVEAWAY: "🎉 **GIVEAWAY** 🎉",
-    GIVEAWAY_ENDED: "**GIVEAWAY FINI**",
-    GIVEAWAY_REMAINING: "Temps restant : **{duration}**",
-    GAW_PARTICIPATE: (olka) => `Réagissez avec 🎉 pour participer !\nGiveaway de **${olka}**`,
-    GAW_WIN: "🎉Félicitations {winners} ! Vous avez gagné **{prize}**!",
-    GAW_FOOTER: "Giveaways",
-    GAW_NOWIN: "Giveaway annulé, aucune participation valide.",
-    GAW_WINNERS: "Gagnant(s)",
-    GAW_ENDEDAT: "Fini",
-    GAW_SECONDS: "secondes",
-    GAW_MINUTES: "minutes",
-    GAW_HOURS: "heures",
-    GAW_DAYS: "jours",
-
-//Musique
-    VOLUME_MAX: (okbooq) => `Le volume doit être entre 0 et ${okbooq}!`,
-    VOLUME_SUCCESS: (gsrok) => `Le volume a bien été défini sur **${gsrok}%**!\n:warning: Attention si le volume dépasse les 100% cela peux endommager votre périphérique audio ainsi que votre audition :warning:`,
-    VOLUME_NAN: "Le volume donné n'est pas un nombre!",
-    NP_ERR_NO_DESC: "**Aucune description**",
-    RESUME_SUCCESS: "▶️ Musique de nouveau en cours de lecture.",
-    PAUSE_SUCCESS: "⏸️ Musique en pause.",
+//music
+    VOLUME_MAX: (okbooq) => `Volume must be between 0 and ${okbooq}!`,
+    VOLUME_SUCCESS: (gsrok) => `Volume has been set to **${gsrok}%**!\n:warning: If the volume goes over to 100%, it might damage your audio peripherals and your hearing :warning:`,
+    VOLUME_NAN: "Given Volume isn't a number.!",
+    NP_ERR_NO_DESC: "**No description**",
+    RESUME_SUCCESS: "▶️ Music resumed.",
+    PAUSE_SUCCESS: "⏸️ Music paused.",
     QUEUE_TITLE: `Playlist`,
-    PLAY_ERR_CANT_JOIN: `<:no:625395798703603752> Je ne peux pas rentrer dans le salon vocal !`,
-    PLAY_ERR_NO_SONG: `<:no:625395798703603752> Plus aucune musique dans la queue !`,
-    PLAY_ADDED_TO_QUEUE: (pmkoz) => `🎵 ${pmkoz} a été ajouté à la queue !`,
-    PLAY_SEARCH: "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
-    PLAY_ERR_NO_NAME: `<:no:625395798703603752> Veuillez entrer un nom de vidéo à chercher !`,
-    PLAY_ERR_VOICE_CHANNEL: `<:no:625395798703603752> Vous devez être connecté dans un salon vocal !`,
-    PLAY_ERR_PERMS: `<:no:625395798703603752> Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans votre salon. Vérifiez mes permissions et réessayez.`,
-    PLAY_ERR_TIMEOUT: `⏳ Temps écoulé ! Veuillez retaper la commande !`,
-    PLAY_ERR_NOT_FOUND: `<:no:625395798703603752> Aucun résultat sur Youtube !`,
-    PLAY_ERR_NOT_PLAYING: `<:no:625395798703603752> Aucune musique en cours !`,
-    PLAY_PLAYING_TITLE: "Lecture en cours",
+    PLAY_ERR_CANT_JOIN: `<:no:625395798703603752> I don't have permisions to enter this channel !`,
+    PLAY_ERR_NO_SONG: `<:no:625395798703603752> No more music in queue !`,
+    PLAY_ADDED_TO_QUEUE: (pmkoz) => `🎵 ${pmkoz} has been added to the queue !`,
+    PLAY_SEARCH: "Please select a value between 1 and 10 to selct the music.",
+    PLAY_ERR_NO_NAME: `<:no:625395798703603752> Please enter a video name to search.`,
+    PLAY_ERR_VOICE_CHANNEL: `<:no:625395798703603752> You must be connected to a voice channel.`,
+    PLAY_ERR_PERMS: `<:no:625395798703603752> An error occured. Either I can't connect to the channel, either i can't speak in it. Please verify my permissions.`,
+    PLAY_ERR_TIMEOUT: `⏳ Time elapsed, please redo the command !`,
+    PLAY_ERR_NOT_FOUND: `<:no:625395798703603752> No result on Youtube !`,
+    PLAY_ERR_NOT_PLAYING: `<:no:625395798703603752> No music playing !`,
+    PLAY_PLAYING_TITLE: "Now Playing",
     PLAY_HEADINGS: [
-        `Titre`,
-        `Autheur`,
-        `Durée`,
-        `Recherche`,
-        `Création`,
+        `Title`,
+        `Author`,
+        `Duration`,
+        `Search`,
+        `Creation`,
         `Description`,
-        `Durée`,
-        `**et plus...**`
+        `Duration`,
+        `**and more...**`
     ],
-    PLAY_SUCCESS: (trdfg) => `🎵 \`${trdfg}\` en cours de lecture...`,
-    PLAY_ADDED_TO_QUEUE: (plkjkl) => `🎵 \`${plkjkl}\` ajouté à la queue!`,
-    PLAY_ERR_NO_NAME: `<:no:625395798703603752> Veuillez entrer un nom de vidéo à chercher !`,
-    STOP_TITLE: `Arrêter la musique`,
-	STOP_CONTENT: (pmlok) => `Arrêter la musique\nVote : ${pmlok}\nRéagissez avec 👍 pour arrêter la musique !`,
-    STOP_CONTENT_COMPLETE: "Musique correctement arrêtée !",
-    SKIP_TITLE: "Passer à la chanson suivante",
-	SKIP_CONTENT: (fsdjk, faoq, pmqds) => `Chanson suivante : \`${fsdjk}\`\nVote : ${faoq}/${pmqds}\nRéagissez avec 👍 pour passer à la chanson suivante !`,
-	SKIP_CONTENT_COMPLETE: (dlqsm) => `Chanson passée ! Maintenant : \`${dlqsm}\``,
-	SKIP_ERR_NO_SONG: `<:no:625395798703603752> Aucune chanson suivante !`,
+    PLAY_SUCCESS: (trdfg) => `🎵 \`${trdfg}\` is now playing...`,
+    PLAY_ADDED_TO_QUEUE: (plkjkl) => `🎵 \`${plkjkl}\` added to the queue.`,
+    PLAY_ERR_NO_NAME: `<:no:625395798703603752> Please enter a video name to search !`,
+    STOP_TITLE: `Stop music`,
+	STOP_CONTENT: (pmlok) => `Stop music\nVote : ${pmlok}\nReact with 👍 to stop the music !`,
+    STOP_CONTENT_COMPLETE: "Music stoped !",
+    SKIP_TITLE: "Skip to next music",
+	SKIP_CONTENT: (fsdjk, faoq, pmqds) => `Skip music : \`${fsdjk}\`\nVote : ${faoq}/${pmqds}\nReact with 👍 to skip to the next music !`,
+	SKIP_CONTENT_COMPLETE: (dlqsm) => `Music skiped ! Now playing : \`${dlqsm}\``,
+	SKIP_ERR_NO_SONG: `<:no:625395798703603752> No more music in queue !`,
 
-    ERR_COMMAND_DISABLED: `<:no:625395798703603752> Cette commande est actuellement désactivée !`,
+    ERR_COMMAND_DISABLED: `<:no:625395798703603752> This command is disabled !`,
 
-    WEATHER_HUMIDI: "Humidité :",
+    WEATHER_HUMIDI: "Humidity :",
 
-    WEATHER_VENT: "Raffale de vents :",
+    WEATHER_VENT: "Winds:",
 
-    WEATHER_TEMPTWO: "Température ressentie :",
+    WEATHER_TEMPTWO: "Felt temperatures:",
 
     WEATHER_CELCIUS: "°C",
 
-    WEATHER_TEMPERATURE: "Température :",
+    WEATHER_TEMPERATURE: "Temperature :",
 
     WEATHER_ZONE: "Zone :",
 
-    WEATHER_LOCATION: "Lieu :",
+    WEATHER_LOCATION: "Place :",
 
-    WEATHER_NOCITY: "<:no:625395798703603752> Aucun lieu trouvée.",
+    WEATHER_NOCITY: "<:no:625395798703603752> No place found.",
 
-    WEATHER_SYNTAX: `Syntaxe : \`${prefix}weather <Ville>\`\nExemple : \`${prefix}weather Agen\``,
+    WEATHER_SYNTAX: `Syntax : \`${prefix}weather <Ville>\`\nE.g. \`${prefix}weather Agen\``,
 
     SUGGEST: "Suggestion :",
 
-    SUGGEST_AUTHOR: "Suggestion de :",
+    SUGGEST_AUTHOR: "Suggestion of :",
 
-    SUGGEST_SYNTAX: `Syntaxe : \`${prefix}suggest <Suggestion>\`\nExemple : \`${prefix}suggest Faire une commande\` `,
+    SUGGEST_SYNTAX: `Syntax : \`${prefix}suggest <Suggestion>\`\nE.g. \`${prefix}suggest do that....\` `,
 
-    ANNONCE_SYNTAX: `Syntaxe : \`${prefix}annonce <Votre annonce>\`\nExemple : \`${prefix}annonce La V2.5 est là !!\``,
+//GIVEAWAY
+    GAW_SYNTAX: (trf) => `Syntax : \`${trf}gaw <time> <number of winners> <prize>\`\nE.g. \`${trf}gaw 7d 1 Premium Uty\``,
+    GIVEAWAY: "🎉 **GIVEAWAY** 🎉",
+    GIVEAWAY_ENDED: "**GIVEAWAY ENDED**",
+    GIVEAWAY_REMAINING: "Time remaining : **{duration}**",
+    GAW_PARTICIPATE: (olka) => `React with 🎉 to participate!\nHosted by **${olka}**`,
+    GAW_WIN: "🎉Congratulations {winners} ! You won **{prize}**!",
+    GAW_FOOTER: "Giveaways",
+    GAW_NOWIN: "Giveaway canceled, no valid participation.",
+    GAW_WINNERS: "Winner(s)",
+    GAW_ENDEDAT: "Ended",
+    GAW_SECONDS: "seconds",
+    GAW_MINUTES: "minutes",
+    GAW_HOURS: "hours",
+    GAW_DAYS: "days",
 
-    ASCII_SYNTAX: `Syntaxe : \`${prefix}ascii <Text>\`\nExemple: \`${prefix}ascii UTY\``,
+    ANNONCE_SYNTAX: `Syntax : \`${prefix}annonce <your announce>\`\nE.g. \`${prefix}annonce The V2.5 is out!\``, //Might edit later
 
-    ERROR_GOODBYE: "<:warn:625395797357363211> Une erreur est survenue : le message d\'au revoir n\'a pas pu être envoyé car le salon est introuvable.",
+    ASCII_SYNTAX: `Syntax : \`${prefix}ascii <Text>\`\nE.g. \`${prefix}ascii UTY\``,
 
-    ERROR_WELCOME: "<:warn:625395797357363211> Une erreur est survenue : le message de bienvenue n\'a pas pu être envoyé car le salon est introuvable.",
+    ERROR_GOODBYE: "<:warn:625395797357363211> An error occured : I couldn't send the goodbye message because I didn't find the specified channel.",
 
-    ERROR_AUTOROLE: "<:warn:625395797357363211> Une erreur est survenue : l\'autôrole n\'a pas pu être ajouté car le rôle est introuvable.",
+    ERROR_WELCOME: "<:warn:625395797357363211> An error occured : I couldn't send the welcome message because I didn't find the specified channel.",
 
-    ERROR_AUTOROLE_TWO: "<:warn:625395797357363211> Une erreur est survenue : l\'autôrole n\'a pas pu être ajouté car le bot n\'a pas les permissions de gérer celui ci !",
+    ERROR_AUTOROLE: "<:warn:625395797357363211> An error occured : I couldn't add the autorole because I didn't find the specified role",
 
-    NO_REASON_PROVIDED: "pas de raison donnée",
+    ERROR_AUTOROLE_TWO: "<:warn:625395797357363211> An error occured : I couldn't add the autorole because I don't have permissions to manage it.",
 
-    ERR_INVALID_TIME: `<:no:625395798703603752> Vous devez entrer un temps valide ! Unités valides : \`s\`, \`m\`, \`h\`, \`d\`, \`w\`, \`y\``,
+    NO_REASON_PROVIDED: "No reason given",
 
-    ERR_SANCTION_YOURSELF: `<:no:625395798703603752> Vous ne pouvez pas vous sanctionner vous-même !`,
+    ERR_INVALID_TIME: `<:no:625395798703603752> You must use a valid unit ! Valid units : \`s\`, \`m\`, \`h\`, \`d\`, \`w\`, \`y\``,
 
-    ERR_INVALID_MEMBER: `<:no:625395798703603752> Veuillez mentionner un membre valide !`,
+    ERR_SANCTION_YOURSELF: `<:no:625395798703603752> You cannot punish yourself!`,
 
-    MUTE_SYNTAX: `Syntaxe : \`${prefix}mute <@Member>\``,
+    ERR_INVALID_MEMBER: `<:no:625395798703603752> Please mention a valid member!`,
 
-    DEMUTE_SYNTAX: `Syntaxe ! \`${prefix}demute @<Member>\``,
+    MUTE_SYNTAX: `Syntax : \`${prefix}mute <@Member>\``,
 
-    DEMUTE_SUCESS: `est maintenant démute.`,
+    DEMUTE_SYNTAX: `Syntax : \`${prefix}demute @<Member>\``,
 
-    MUTE_MP: (sdoia) => `<:warn:625395797357363211> Vous avez été mute pendant ${sdoia} !`,
+    DEMUTE_SUCESS: `has been unmuted`,
 
-    MUTE_SUCCESS: (member) => `<:yes:625395796908572683> **${member}** est maintenant mute pendant **`,
+    MUTE_MP: (sdoia) => `<:warn:625395797357363211> You have been muted for ${sdoia} !`,
 
-    ERR_INVALID_ID: `<:no:625395798703603752> Veuillez entrer une ID valide !`,
-
-    UNBAN_ERR_ID: (id) => `<:no:625395798703603752>  Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
-
-    UNBAN_ERR_NOT_BANNED: (user) => `<:no:625395798703603752>  **${user}** n'est pas banni !`,
-
-    UNBAN_SUCCESS: (user) => `<:yes:625395796908572683> **${user}** vient d'être débanni.`,
+    MUTE_SUCCESS: (member) => `<:yes:625395796908572683> **${member}** has been muted for **`,
     
-    BAN_ID: "<:aiedi:709513845533835285> ID:",
+    ERR_INVALID_ID: `<:no:625395798703603752> Please enter a valid ID!`,
 
-    KICK_SYNTAX: `Syntaxe : \`${prefix}kick <@membre> <raison>\`\nExemple: \`${prefix}kick @Quark Aime pas jean\``,
+    UNBAN_ERR_ID: (id) => `<:no:625395798703603752>  Provided ID \`${id}\` was not found!`,
+    
+    UNBAN_ERR_NOT_BANNED: (user) => `<:no:625395798703603752>  **${user}** is not banned!`,
+    
+	UNBAN_SUCCESS: (user) => `<:yes:625395796908572683> **${user}** has been unbanned.`,
 
-    LEAVE_SYNTAX: `Syntaxe : \`${prefix}bye <on/off> <#channel> <Message>\`\nExemple : \`${prefix}bye #aurevoir {member} Viens de quitter {server} nous sommes {membercount}\``,
+    BAN_ID: "<:ID:708755663760785501> ID:",
 
-    LEAVE_ACTIVE: "<:yes:625395796908572683> Message d\'au revoir activé !",
+    KICK_SYNTAX: `Syntax : \`${prefix}kick <@membre> <raison>\`\nE.g. \`${prefix}kick @Quark Doesn't like Jean\``,
 
-    LEAVE_DESAC: "<:yes:625395796908572683> Message d\'au revoir désactivé !",
+    LEAVE_SYNTAX: `Syntax : \`${prefix}bye <on/off> <#channel> <Message>\`\nE.g. \`${prefix}bye #goodbye {member} just left {server}. We are now {membercount}\``,
 
-    RR_KC: "Malheuresement cette commande à été clôturé car elle n'été pas optimisée. Si vous êtes développeur et que vous pensez être capable de la re-développer, contactez un Administrateur de Uty.",
+    LEAVE_ACTIVE: "<:yes:625395796908572683> Goodbye message enabled.",
 
-    BVNMP_SYNTAX: `Syntaxe : \`${prefix}bvn-mp <on/off> <Message>\`\nExemple : \`${prefix}bvn-mp on Bienvenue {member} sur {server} nous sommes désormais {membercount}\``,
+    LEAVE_DESAC: "<:yes:625395796908572683> Goodbye message disabled.",
 
-    BVNMP_ACTIVE: "<:yes:625395796908572683> Messages de bienvenue en messages privés activés !",
+    RR_KC: "This command has been deleted by the developers for optimization issues. If you think that you are able to code it for us, feel free to contact the support with u/contact",
 
-    BVNMP_DESAC: "<:yes:625395796908572683> Messages de bienvenue en messages privés désactivés !",
+    BVNMP_SYNTAX: `Syntax : \`${prefix}welcome-mp <on/off> <Message>\`\nE.g. \`${prefix}welcome-mp on Welcome {member} on {server}. We're now {membercount}\``,
 
-    BVN_SYNTAX: `Syntaxe : \`${prefix}bvn <on/off> <#channel> <Message>\`\nExemple : \`${prefix}bvn on #nouveaux Bienvenue {member} sur {server} nous sommes désormais {membercount}\``,
+    BVNMP_ACTIVE: "<:yes:625395796908572683> Welcome messages will now be sent to newcomers via private message.",
 
-    BVN_ACTIVE: "<:yes:625395796908572683> Message de bienvenue activé !",
+    BVNMP_DESAC: "<:yes:625395796908572683> Welcome messages will no longer be sent to newcomers via private message.",
 
-    BVN_DESAC: "<:yes:625395796908572683> Message de bienvenue désactivé !",
+    BVN_SYNTAX: `Syntax : \`${prefix}welcome <on/off> <#channel> <Message>\`\nE.g. \`${prefix}welcome on #newcomers Welcome {member} on {server}. We're now {membercount}\``,
 
-    BALL_SYNTAX: `Syntaxe : \`${prefix}8ball <Votre question>\`\nExemple : \`${prefix}8ball Kizuru est gentil ?\``,
+    BVN_ACTIVE: "<:yes:625395796908572683> Welcome messages enabled.",
 
-    CALC_OPE: "**Opération:**",
+    BVN_DESAC: "<:yes:625395796908572683> Welcome messages disabled.",
 
-    CALC_RESULT: "**Résultat:**",
+    BALL_SYNTAX: `Syntax : \`${prefix}8ball <Your question>\`\nE.g. : \`${prefix}8ball Is Kizuru kind ?\``,
 
-    ANNOUNCE_FOOTER: (fdse) => `Uty • Annonce de : ${fdse}`,
+    CALC_OPE: "**Operation:**",
 
-    BAN_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu bannir le membre",
+    CALC_RESULT: "**Result:**",
 
-    KICK_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu kick le membre",
+    ANNOUNCE_FOOTER: (fdse) => `Uty • Broadcast of : ${fdse}`,
 
-    REROLL_SUCCES: "Succès ! Giveaway relancé !",
+    BAN_ERRTWO: "<:no:625395798703603752> I couldn't ban the user.",
 
-    REROLL_ERR: (trfr) => `Aucun giveaway avec l'id ${trfr} n'a été trouvé.`,
+    KICK_ERRTWO: "<:no:625395798703603752> I couldn't kick the user.",
 
-    BETA: "Voici le lien pour ajouter la version Beta de Uty : **<http://bit.ly/2oja10U>**",
+    REROLL_SUCCES: "Success ! Giveaway rerolled !",
 
-    CONTACT: "Aucun channel avec le nom `aide` a été trouvé, veuillez en créer un pour faire une demande d'aide",
+    REROLL_ERR: (trfr) => `No giveaway with id ${trfr} was found.`,
 
-    CONTACT_ERR: "<:no:625395798703603752> Veuillez entrer une raison !",
+    BETA: "Here's the link to add the beta version of Uty : **<http://bit.ly/2oja10U>**",
 
-    CONTACT_SUCESS: "<:yes:625395796908572683> Vous venez de demander de l'aide à un **Helpeur** :raising_hand:",
+    CONTACT: "No channel with `#help` as name was found. Please create one.",
 
-    HELP_INFO: (ufse) => `Aucune information trouvé pour la commande **${ufse}**`,
+    CONTACT_ERR: "<:no:625395798703603752> Please enter a reason.",
 
-    HELP_NAME: (olaq) => `**Nom de la commande**: ${olaq}`,
+    CONTACT_SUCESS: "<:yes:625395796908572683> You've called the support ! Someone will help you as soon as possible :raising_hand:",
 
-    HELP_INFOTWO: (ikls) => `\n**Aliasses**: ${ikls}`,
+    HELP_INFO: (ufse) => `No information found for this command **${ufse}**`,
+
+    HELP_NAME: (olaq) => `**Command name**: ${olaq}`,
+
+    HELP_INFOTWO: (ikls) => `\n**Aliases**: ${ikls}`,
 
     HELP_DESC: (gjrl) => `\n**Description**: ${gjrl}`,
 
-    HELP_FOOTER: "Syntaxe: <> = obligatoire, [] = facultatif",
+    HELP_FOOTER: "Syntax: <> = must be filled, [] = optional",
 
     HELP_TIMEOUT: (uyse) => `\n**Timeout**: ${uyse}`,
 
     HELP_PERM: (kisq) => `\n**Permission** : ${kisq}`,
 
-    IB_TITLE: "Statistiques d'Uty",
+    IB_TITLE: "Uty's Stats",
 
     IB_FIELD: [
-        `🗺️ Nombre de serveurs`,
-        `👤 Nombre d'utilisateurs`,
-        `🔈 Nombre de connections vocales`,
-        `💬 Nombre de salons textuels`,
-        `🖥️ Système d'exploitation`,
+        `🗺️ Servers`,
+        `👤 Total users`,
+        `🔈 Total vc connections`,
+        `💬 Total chat channels`,
+        `🖥️ Operating System`,
         `🎚️ Architecture`,
-        `🔨 Processeur`,
-        `<:server:623164595271368724> RAM`,
-        `⏰ En ligne sur Discord depuis`,
-        `🗂️ Lib`
+        `🔨 Processor`,
+        `<:479567978732716042:565962078188470292> RAM`,
+        `⏰ Uptime`,
+        `🗂️ Library`
     ],
 
-    INVITE_TITLE: "Uty sur votre Serveur",
+    INVITE_TITLE: "Uty on your server",
 
-    C_ANY: "Acune",
+    C_ANY: "Nothing",
 
-    C_INFO: (getvalueof) => `:printer: Informations sur **${getvalueof}**`,
+    C_INFO: (getvalueof) => `:printer: Informations on **${getvalueof}**`,
 
-    C_NAME: "**Nom**",
+    C_NAME: "**Name**",
 
     C_ID: "**ID**",
 
@@ -229,151 +227,161 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     C_DESC: "**Description**",
 
-    C_CATEGORIE: "**Catégorie**",
+    C_CATEGORIE: "**Category**",
 
-    S_OWNER: "**Propiétaire du serveur**",
+    S_OWNER: "**Server owner**",
 
-    C_CREATE: "**Création du channel**",
+    C_CREATE: "**Channel creation**",
 
-    C_CREATEC: "**Création de la catégorie**",
+    C_CREATEC: "**Category creation**",
 
-    LANGUAGE_UPDATED: "Langue du bot mise à jour",
+    LANGUAGE_UPDATED: "Bot language modified.",
 
-    MISSING_LANGUAGE: (rlsoz) => `Vous devez préciser une langue valide! (${rlsoz})`,
+    MISSING_LANGUAGE: "You must specify a valid language. (english or french)",
 
-    LANGUAGE_NO_EXIST: "Cette langue n'existe pas!",
+    LANGUAGE_NO_EXIST: "I don't know this language :/",
 
-    ERROR: "<:no:625395798703603752> Une erreur s'est produite",
+    ERROR: "An error occured!",
 
-    AVATAR: (mas) => `📸 Avatar de **${mas}**`,
+    AVATAR: (mas) => `📸 Avatar of **${mas}**`,
 
-    COOLDOWN: (time) => `Vous pouvez utiliser cette commande seulement toutes les ${time}.`,
+    COOLDOWN: (time) => `You can use this command every ${time}.`,
 
-    SYNTAXERR: "Erreur de Syntaxe!",
+    SYNTAXERR: "Syntax Error!",
 
-    CALCUSE: `Syntaxe : \`${prefix}calc <Votre opération>\`\nExemple : \`${prefix}calc 24/2*5+4-8\``,
+    CALCUSE: `Syntax : \`${prefix}calc <operation>\`\nE.g. \`${prefix}calc 24/2*5+4-8\``,
 
-    CALCERR: (question) => `Votre opération (${question}) est impossible à effectuer!`,
+    CALCERR: (question) => `Your operation (${question}) couldn't be solved!`,
 
-    CALCERRTITLE: (question) => "Erreur mathématique!",
+    CALCERRTITLE: (question) => "Math Error!",
 
-    AUTOROLEERR: `Syntaxe : \`${prefix}autorole <on/off> <@role/role>\`\nExemple : \`${prefix}autorole on Uty'Lisateur\``,
+    AUTOROLEERR: `Syntax : \`${prefix}autorole <on/off> <@role/role>\`\nE.g. \`${prefix}autorole on Uty'Lisateur\``,
 
-    AUTOROLE_INTROUVABLE: (pop) => `<:warn:625395797357363211> Rôle ${pop} introuvable !`,
+    AUTOROLE_INTROUVABLE: (pop) => `<:warn:625395797357363211> Can't find ${pop}!`,
 
-    AUTOROLE_ACTIVE: "<:yes:625395796908572683> Autorôle Activé !",
+    AUTOROLE_ACTIVE: "<:yes:625395796908572683> Autorole enabled !",
 
-    AUTOROLE_DESACTIVE: "<:yes:625395796908572683> Autorôle Désactivé !",
+    AUTOROLE_DESACTIVE: "<:yes:625395796908572683> Autorole disabled !",
 
-    HASTEBIN_USE: `Syntaxe : \`${prefix}hastebin <Votre code>\`\nExemple : \`${prefix}hastebin console.log('Hello World!')\``,
+    HASTEBIN_USE: `Syntax : \`${prefix}hastebin <your code>\`\nE.g. \`${prefix}hastebin console.log('Hello World!')\``,
 
-    HASTEBIN_SUCCESS: (mau) => `Le lien a été envoyé à ${mau}`,
+    HASTEBIN_SUCCESS: (mau) => `Link has been sent to ${mau}`,
 
-    SHORTEN_USE: `Syntaxe : \`${prefix}shorten <Votre lien>\`\nExemple : \`${prefix}shorten https://uty-bot.xyz\``,
+    SHORTEN_USE: `Syntax : \`${prefix}shorten <your link>\`\nE.g. \`${prefix}shorten https://uty-bot.xyz\``,
 
-    SHORTEN_ERROR: `**Lien invalide**\nSyntaxe : \`${prefix}shorten <Votre lien>\`\nExemple : \`${prefix}shorten https://uty-bot.xyz\``,
+    SHORTEN_ERROR: `**Invalid Link**\nSyntax : \`${prefix}shorten <your link>\`\nE.g. \`${prefix}shorten https://uty-bot.xyz\``,
 
-    SHORTEN_SUCCESS: "📎 Lien raccourci",
+    SHORTEN_SUCCESS: "📎 Link shortened",
 
-    CLEAR_USE: `Syntaxe: \`${prefix}clear <nombre de messages>\`\nExemple: \`${prefix}clear 88\``,
+    CLEAR_USE: `Syntax: \`${prefix}clear <number of messages>\`\nE.g. \`${prefix}clear 88\``,
 
-    BAN_USE: `Syntaxe : \`${prefix}ban <Mention de l'utilisateur à ban> <raison>\`\nExemple : \`${prefix}ban @Enertix Le Vrai#0988 Raid\``,
+    BAN_USE: `Syntax : \`${prefix}ban <@user> <reason>\`\nE.g. \`${prefix}ban @Enertix Le Vrai#0988 Raid\``,
 
-    BAN_ERROR_ONE: "Veuillez donner à Uty les permissions requises pour bannir des utilisateurs.",
+    BAN_ERROR_ONE: "Please give Uty the required permissions in order to ban someone.",
 
-    BAN_ERROR_TWO: (iope) => `Le membre (${iope}) n'est pas sur votre serveur.`,
+    BAN_ERROR_TWO: (iope) => `User (${iope}) isn't a member of your server.`,
 
-    BAN_USER: "Membre banni:",
+    BAN_USER: "User banned:",
 
-    BY: "Par",
+    BY: "By",
 
-    BAN_BY: "Vous avez été banni par",
+    BAN_BY: "You have been banned by",
 
-    BAN_RAISON: "Raison:",
+    BAN_RAISON: "Reason:",
 
-    BAN_TYPE: "Type de ban:",
+    BAN_TYPE: "Ban Type:",
 
-    BAN_TYPE_INFINITE: "♾️ Jusqu'à débannissement manuel",
+    BAN_TYPE_INFINITE: "♾️ Until manual unban",
 
-    BAN_ON_THE_SERVER: "Sur le serveur:",
+    BAN_ON_THE_SERVER: "On the server:",
 
-    BAN_ALERT: "🔨 Alerte Bannissement",
+    BAN_ALERT: "🔨 Ban Alert",
 
-    KICK_USER: "Membre kické:",
+    KICK_USER: "User kicked:",
 
-    KICK_ALERT: "Alerte de Kick",
+    KICK_ALERT: "Kick Alert",
 
-    KICK_BY: "Kické par",
+    KICK_BY: "Kicked by",
 
-    KICK_ERROR_TWO: (irope) => `Le membre (${irope}) n'est pas sur votre serveur.`,
+    KICK_ERROR_TWO: (irope) => `User (${irope}) isn't in your server.`,
 
-    BALL_REP: ["Oui", "Non", "Sûrement", "Je ne sais pas", "Probablement", "Evidemment", "Evidemment que non", "Bien-sûr", "Effectivement"],
+    BALL_REP: ["Yes", "No", "Surely", "I don't know", "Perhaps", "Of course", "Of course not", "For sure", "Indeed"],
 
-    BALL_THAT: "que",
+    BALL_THAT: "that",
 
-    ASCII_RAC: "Votre texte est trop long! Veuillez le raccourcir.",
+    ASCII_RAC: "Your text is too long. Shorten it.",
 
-    QRCODE_USE: `Syntaxe : \`${prefix}qrcode <lien/texte>\` \nExemple : \`${prefix}qrcode https://uty-bot.xyz\``,
+    QRCODE_USE: `Syntax : \`${prefix}qrcode <link/text>\` \nE.g. \`${prefix}qrcode https://uty-bot.xyz\``,
 
-    EMBED_USE: `Syntaxe : \`${prefix}embed <Votre message>\`\nExemple : \`${prefix}embed Bienvenue! \n Voici les règles du serveur!\``,
+    EMBED_USE: `Syntax : \`${prefix}embed <your message>\`\nE.g. \`${prefix}embed Welcome! \n Here are the rules!\``,
 
-    SAY_USE: `Syntaxe : \`${prefix}say <Votre message>\`\nExemple : \`${prefix}say J'aime les pâtes!\``,
+    SAY_USE: `Syntax : \`${prefix}say <your message>\`\nE.g. \`${prefix}say I like pastas!\``,
 
-    SONDAGE_USE: `Syntaxe : \`${prefix}sondage <Votre question>\`\nExemple : \`${prefix}sondage aimez vous les pâtes?\``,
+    SONDAGE_USE: `Syntax : \`${prefix}poll <your poll>\`\nE.g. \`${prefix}sondage Y'all like pastas?\``,
 
-    SURVEY: "Sondage",
+    SURVEY: "Poll",
 
-    WARN_RAISON: "Raison du warn:",
+    WARN_RAISON: "Warn reason:",
 
-    WARN_BY: "Vous avez été warn par",
+    WARN_BY: "You have been warned by",
 
-    WARN_USER: "Utilisateur avertit:",
+    WARN_USER: "User warned:",
 
-    WARN_USE: `Syntaxe : \`${prefix}warn <Mention de l'utilisateur à warn> <raison>\`\nExemple : \`${prefix}warn @Enertix Le Vrai#0988 Flood\``,
+    WARN_USE: `Syntax : \`${prefix}warn <@user> <reason>\`\nE.g. \`${prefix}warn @Enertix Le Vrai#0988 Flood\``,
 
-    HELP_NUMBER_COMMAND: "Nombre de commandes",
+    HELP_NUMBER_COMMAND: "Number of commands",
 
-    HELP_LIST: "Liste des commandes",
+    HELP_LIST: "List of commands",
 
     UTILS: {
-        YES: "Oui",
-        NO: "Non",
+        YES: "Yes",
+        NO: "No",
         STATUS: {
-            "dnd": "<:red:535095760379838495> Ne pas déranger",
+            "dnd": "<:red:535095760379838495> Do not dissturb",
             "idle": "<:Idle:535095736761843712> AFK (idle)",
-            "offline": "<:Invisible:535095544226381864> Déconnecté",
-            "online": "<:On:535095561968418838> En ligne"
+            "offline": "<:Invisible:535095544226381864> Offline",
+            "online": "<:On:535095561968418838> Online"
         },
     },
 
-    USERINFO_DESCRIPTION: "Affiche des informations sur l'utilisateur !",
-			USERINFO_ERR_ID: (id) => `<:no:625395798703603752> Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+    USERINFO_DESCRIPTION: "Show informations on the user!",
+			USERINFO_ERR_ID: (id) => `<:no:625395798703603752> No user has the ID \`${id}\` !`,
 			USERINFO_FIELDS: [
-				"👤 Pseudo",
-				`<:__:708744869002346557> Discriminateur`,
-				`🤖 Robot`,
-				`🎂 Création`,
-				`🎮 Jeu`,
-				`<:On:535095561968418838> Statut`,
-				`👑 Rôle le plus haut`,
-				`🚪 Arrivée sur le serveur`,
-				`🕵️ Surnom`,
-                `♥️ Serveur(s) en commun avec Uty`,
-                `<:aiedi:709513845533835285> ID`
+				"👤 Username",
+				`<:__:708744869002346557> Tag`,
+				`🤖 Bot`,
+				`🎂 Creation`,
+				`🎮 Game`,
+				`<:On:535095561968418838> Status`,
+				`👑 Highest role`,
+				`🚪 Coming date`,
+				`🕵️ Nickname`,
+                `♥️ Shared servers with Uty`,
+                `<:ID:708755663760785501> ID`
 			],
-			USERINFO_NO_GAME: "Pas de jeu",
-            USERINFO_NO_NICKNAME: "Pas de surnom",
+			USERINFO_NO_GAME: "NO game",
+            USERINFO_NO_NICKNAME: "No nickname",
             
             SERVERINFO_HEADINGS:[
-				`🎟️ Nom`,
-				`🎂 Création`,
-				`<:On:535095561968418838> Membres en ligne`,
+				`<:ticket:708751211657953381> Name`,
+				`🎂 Creation`,
+				`<:On:535095561968418838> Users online`,
 				`🤖 Bot(s)`,
-				`💤 Salon AFK`,
-				`<:aiedi:709513845533835285> ID`,
-				`👑 Fondateur`,
-				`<a:Boost:651892476679946248> Boosts`
+				`💤 AFK Channel`,
+				`<:ID:708755663760785501> ID`,
+				`👑 Owner`,
+				`<:boost:708748691221250139> Boosts`
 			],
             SERVERINFO_ONLINE: (Online) => `${Online}`,
             SERVERINFO_BOT: (botSize) => `${botSize}`,
-			SERVERINFO_NO_AFK: "Aucun salon AFK",
+			SERVERINFO_NO_AFK: "No AFK Channel",
+
+};
+
+const translate = (key, ...args) => {
+    const translation = languageData[key]; 
+    if(typeof translation === "function") return translation(args);
+    else return translation;
+};
+
+module.exports = translate;
