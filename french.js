@@ -1,9 +1,7 @@
-/*Bonjour ou bonsoir, Vous êtes dans le fichier french.js ici vous devez seulement corriger les fautes d'orthographe. tout se qui est
-dans des accolade ne doit pas être modifié
-Exemple : "Lecture de ${musique}..."
-Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un emoji).
-*/
+const config = require('../config.json'),
+prefix = config.prefix;
 
+const languageData = {
 //Time
     ONE_DAY: "un jour",
     DAYS: (hijfsdg) => `${hijfsdg}j`,
@@ -16,7 +14,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
 //Permissions ERROR
     ERRORPERMSTITLE: "Erreur de permissions!",
-    ERRORPERMS: (opp) => `Vous n'avez la permission \`${opp}\` pour executer cette commande.`,
+    ERRORPERMS: (opp) => `Vous n'avez pas la permission \`${opp}\`. Cette permission est requise pour executer cette commande.`,
 
 //GIVEAWAY
     GAW_SYNTAX: (trf) => `Syntaxe : \`${trf}gaw <temps> <nb gagnant> <prix>\`\nExemple : \`${trf}gaw 7d 1 Premium Uty\``,
@@ -48,19 +46,19 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
     PLAY_SEARCH: "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
     PLAY_ERR_NO_NAME: `<:no:625395798703603752> Veuillez entrer un nom de vidéo à chercher !`,
     PLAY_ERR_VOICE_CHANNEL: `<:no:625395798703603752> Vous devez être connecté dans un salon vocal !`,
-    PLAY_ERR_PERMS: `<:no:625395798703603752> Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans votre salon. Vérifiez mes permissions et réessayez.`,
+    PLAY_ERR_PERMS: `<:no:625395798703603752> Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans celui-ci. Vérifiez mes permissions et réessayez.`,
     PLAY_ERR_TIMEOUT: `⏳ Temps écoulé ! Veuillez retaper la commande !`,
     PLAY_ERR_NOT_FOUND: `<:no:625395798703603752> Aucun résultat sur Youtube !`,
-    PLAY_ERR_NOT_PLAYING: `<:no:625395798703603752> Aucune musique en cours !`,
+    PLAY_ERR_NOT_PLAYING: `<:no:625395798703603752> Aucune musique en lecture !`,
     PLAY_PLAYING_TITLE: "Lecture en cours",
     PLAY_HEADINGS: [
         `Titre`,
-        `Autheur`,
+        `Auteur`,
         `Durée`,
         `Recherche`,
         `Création`,
         `Description`,
-        `Durée`,
+        `Durée`, // à patch plus tard
         `**et plus...**`
     ],
     PLAY_SUCCESS: (trdfg) => `🎵 \`${trdfg}\` en cours de lecture...`,
@@ -90,9 +88,9 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     WEATHER_LOCATION: "Lieu :",
 
-    WEATHER_NOCITY: "<:no:625395798703603752> Aucun lieu trouvée.",
+    WEATHER_NOCITY: "<:no:625395798703603752> Aucun lieu trouvé.",
 
-    WEATHER_SYNTAX: `Syntaxe : \`${prefix}weather <Ville>\`\nExemple : \`${prefix}weather Agen\``,
+    WEATHER_SYNTAX: `Syntax : \`${prefix}weather <Ville>\`\nExemple : \`${prefix}weather Agen\``,
 
     SUGGEST: "Suggestion :",
 
@@ -142,27 +140,27 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     KICK_SYNTAX: `Syntaxe : \`${prefix}kick <@membre> <raison>\`\nExemple: \`${prefix}kick @Quark Aime pas jean\``,
 
-    LEAVE_SYNTAX: `Syntaxe : \`${prefix}bye <on/off> <#channel> <Message>\`\nExemple : \`${prefix}bye #aurevoir {member} Viens de quitter {server} nous sommes {membercount}\``,
+    LEAVE_SYNTAX: `Syntaxe : \`${prefix}bye <on/off> <#channel> <Message>\`\nExemple : \`${prefix}bye on #aurevoir {member} vient de quitter {server} nous sommes {membercount}\``,
 
     LEAVE_ACTIVE: "<:yes:625395796908572683> Message d\'au revoir activé !",
 
     LEAVE_DESAC: "<:yes:625395796908572683> Message d\'au revoir désactivé !",
 
-    RR_KC: "Malheuresement cette commande à été clôturé car elle n'été pas optimisée. Si vous êtes développeur et que vous pensez être capable de la re-développer, contactez un Administrateur de Uty.",
+    RR_KC: "Malheuresement cette commande a été clôturée car elle n'était pas optimisée. Si vous êtes développeur et que vous pensez être capable de la re-développer, contactez un Administrateur de Uty.",
 
     BVNMP_SYNTAX: `Syntaxe : \`${prefix}bvn-mp <on/off> <Message>\`\nExemple : \`${prefix}bvn-mp on Bienvenue {member} sur {server} nous sommes désormais {membercount}\``,
 
-    BVNMP_ACTIVE: "<:yes:625395796908572683> Messages de bienvenue en messages privés activés !",
+    BVNMP_ACTIVE: "<:yes:625395796908572683> Les messages de bienvenue seront désormais envoyés en messages privés aux nouveaux venus",
 
-    BVNMP_DESAC: "<:yes:625395796908572683> Messages de bienvenue en messages privés désactivés !",
+    BVNMP_DESAC: "<:yes:625395796908572683> Les messages de bienvenue ne seront plus envoyés en messages privés aux nouveaux venus",
 
     BVN_SYNTAX: `Syntaxe : \`${prefix}bvn <on/off> <#channel> <Message>\`\nExemple : \`${prefix}bvn on #nouveaux Bienvenue {member} sur {server} nous sommes désormais {membercount}\``,
 
-    BVN_ACTIVE: "<:yes:625395796908572683> Message de bienvenue activé !",
+    BVN_ACTIVE: "<:yes:625395796908572683> Messages de bienvenue activés !",
 
-    BVN_DESAC: "<:yes:625395796908572683> Message de bienvenue désactivé !",
+    BVN_DESAC: "<:yes:625395796908572683> Messages de bienvenue désactivés !",
 
-    BALL_SYNTAX: `Syntaxe : \`${prefix}8ball <Votre question>\`\nExemple : \`${prefix}8ball Kizuru est gentil ?\``,
+    BALL_SYNTAX: `Syntaxe : \`${prefix}8ball <Votre question>\`\nExemple : \`${prefix}8ball Kizuru est-il gentil ?\``,
 
     CALC_OPE: "**Opération:**",
 
@@ -170,9 +168,9 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     ANNOUNCE_FOOTER: (fdse) => `Uty • Annonce de : ${fdse}`,
 
-    BAN_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu bannir le membre",
+    BAN_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu bannir cette personne",
 
-    KICK_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu kick le membre",
+    KICK_ERRTWO: "<:no:625395798703603752> Je n\'ai pas pu kick cette personne",
 
     REROLL_SUCCES: "Succès ! Giveaway relancé !",
 
@@ -184,9 +182,9 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     CONTACT_ERR: "<:no:625395798703603752> Veuillez entrer une raison !",
 
-    CONTACT_SUCESS: "<:yes:625395796908572683> Vous venez de demander de l'aide à un **Helpeur** :raising_hand:",
+    CONTACT_SUCESS: "<:yes:625395796908572683> Vous venez de demander de l'aide au **Support de Uty** :raising_hand:",
 
-    HELP_INFO: (ufse) => `Aucune information trouvé pour la commande **${ufse}**`,
+    HELP_INFO: (ufse) => `Aucune information trouvée pour la commande **${ufse}**`,
 
     HELP_NAME: (olaq) => `**Nom de la commande**: ${olaq}`,
 
@@ -217,7 +215,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     INVITE_TITLE: "Uty sur votre Serveur",
 
-    C_ANY: "Acune",
+    C_ANY: "Aucune",
 
     C_INFO: (getvalueof) => `:printer: Informations sur **${getvalueof}**`,
 
@@ -241,7 +239,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     MISSING_LANGUAGE: (rlsoz) => `Vous devez préciser une langue valide! (${rlsoz})`,
 
-    LANGUAGE_NO_EXIST: "Cette langue n'existe pas!",
+    LANGUAGE_NO_EXIST: "Cette langue n'est pas connue de Uty.",
 
     ERROR: "<:no:625395798703603752> Une erreur s'est produite",
 
@@ -319,7 +317,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     SAY_USE: `Syntaxe : \`${prefix}say <Votre message>\`\nExemple : \`${prefix}say J'aime les pâtes!\``,
 
-    SONDAGE_USE: `Syntaxe : \`${prefix}sondage <Votre question>\`\nExemple : \`${prefix}sondage aimez vous les pâtes?\``,
+    SONDAGE_USE: `Syntaxe : \`${prefix}sondage <Votre question>\`\nExemple : \`${prefix}sondage aimez vous les pâtes?\``, 
 
     SURVEY: "Sondage",
 
@@ -327,7 +325,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
 
     WARN_BY: "Vous avez été warn par",
 
-    WARN_USER: "Utilisateur avertit:",
+    WARN_USER: "Utilisateur averti:",
 
     WARN_USE: `Syntaxe : \`${prefix}warn <Mention de l'utilisateur à warn> <raison>\`\nExemple : \`${prefix}warn @Enertix Le Vrai#0988 Flood\``,
 
@@ -340,7 +338,7 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
         NO: "Non",
         STATUS: {
             "dnd": "<:red:535095760379838495> Ne pas déranger",
-            "idle": "<:Idle:535095736761843712> AFK (idle)",
+            "idle": "<:Idle:535095736761843712> AFK (absent)",
             "offline": "<:Invisible:535095544226381864> Déconnecté",
             "online": "<:On:535095561968418838> En ligne"
         },
@@ -377,3 +375,13 @@ Tout se qui ressemble a ceci "<:blabla:0000000>" ne le traduisez pas (c'est un e
             SERVERINFO_ONLINE: (Online) => `${Online}`,
             SERVERINFO_BOT: (botSize) => `${botSize}`,
 			SERVERINFO_NO_AFK: "Aucun salon AFK",
+
+};
+
+const translate = (key, ...args) => {
+    const translation = languageData[key]; 
+    if(typeof translation === "function") return translation(args);
+    else return translation;
+};
+
+module.exports = translate;
